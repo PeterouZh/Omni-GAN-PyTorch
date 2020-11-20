@@ -4,12 +4,13 @@
 
 ![](.github/cgan_loss.jpg)
 
+#### Results on CIFAR100
 <p float="left">
-<img src="https://github.com/PeterouZh/Omni-GAN-PyTorch/blob/main/.github/GAN_cGAN_cifar100_IS.png" width="300" />
-<img src="https://github.com/PeterouZh/Omni-GAN-PyTorch/blob/main/.github/GAN_cGAN_cifar100_FID.png" width="300" />
+<img src="https://github.com/PeterouZh/Omni-GAN-PyTorch/blob/main/.github/GAN_cGAN_cifar100_IS.png" width="350" />
+<img src="https://github.com/PeterouZh/Omni-GAN-PyTorch/blob/main/.github/GAN_cGAN_cifar100_FID.png" width="350" />
 </p>
 
-![alt-text-1](.github/GAN_cGAN_cifar100_IS.png "title-1") ![alt-text-2](.github/GAN_cGAN_cifar100_FID.png "title-2")
+
 
 ### Prepare environment
 
