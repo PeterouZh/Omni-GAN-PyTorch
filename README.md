@@ -9,6 +9,8 @@
 <img src="https://github.com/PeterouZh/Omni-GAN-PyTorch/blob/main/.github/GAN_cGAN_cifar100_FID.png" width="300" />
 </p>
 
+![alt-text-1](.github/GAN_cGAN_cifar100_IS.png "title-1") ![alt-text-2](.github/GAN_cGAN_cifar100_FID.png "title-2")
+
 ### Prepare environment
 
 
