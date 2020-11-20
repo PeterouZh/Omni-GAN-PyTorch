@@ -1,0 +1,29 @@
+authorName: PeterouZh
+experimentName: Unified_GAN_mnist_svhn
+trialConcurrency: 1
+maxExecDuration: 480h
+maxTrialNum: 10000
+trainingServicePlatform: remote
+searchSpacePath: train_unified_GAN.json
+useAnnotation: false
+tuner:
+  builtinTunerName: TPE
+  classArgs:
+    optimize_mode: minimize
+    parallel_optimize: true
+    constant_liar_type: min
+trial:
+  command: ANSI_COLORS_DISABLED=1 PYTHONPATH=./:./BigGAN_PyTorch_1_lib LD_LIBRARY_PATH=$HOME/.keras/envs/cuda-10.0/lib64:$HOME/.keras/envs/cudnn-10.0-linux-x64-v7.6.5.32/lib64
+    python exp/mixed_mnist_svhn/train.py --tl_config_file exp/configs/Unified_GAN_MNIST_SVHN.yaml
+    --tl_command train_unified_GAN --tl_outdir results/Unified_GAN_MNIST_SVHN/train_unified_GAN-20201103_210805_487
+    --tl_time_str 20201103_210805_487 --tl_opts dataset.mnist_root ~/.keras/mnist
+    dataset.svhn_root ~/.keras/svhn inception_file ~/.keras/BigGAN-PyTorch-1-exp/datasets/torch_fid_stat/mnist_svhn_inception_moments.npz
+  codeDir: ../../..
+  gpuNum: 1
+machineList:
+- ip: 192.168.101.33
+  username: user321
+  sshKeyPath: ~/.ssh/id_rsa
+  gpuIndices: 0,1,3,4,5
+  useActiveGpu: true
+nniManagerIp: localhost

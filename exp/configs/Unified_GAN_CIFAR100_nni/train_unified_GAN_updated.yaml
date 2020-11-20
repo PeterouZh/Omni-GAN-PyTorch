@@ -1,0 +1,36 @@
+authorName: PeterouZh
+experimentName: Unified_GAN_cifar100
+trialConcurrency: 1
+maxExecDuration: 480h
+maxTrialNum: 10000
+trainingServicePlatform: remote
+searchSpacePath: train_unified_GAN_v1.json
+useAnnotation: false
+tuner:
+  builtinTunerName: TPE
+  classArgs:
+    optimize_mode: minimize
+    parallel_optimize: true
+    constant_liar_type: min
+trial:
+  command: PYTHONPATH=./:./BigGAN_PyTorch_1_lib LD_LIBRARY_PATH=$HOME/.keras/envs/cuda-10.0/lib64:$HOME/.keras/envs/cudnn-10.0-linux-x64-v7.6.5.32/lib64
+    python exp/unified_loss/train.py --tl_config_file exp/configs/Unified_GAN_CIFAR100.yaml
+    --tl_command train_unified_GAN --tl_outdir results/Unified_GAN_CIFAR100/train_unified_GAN
+    --tl_time_str 20201025_1117_280 --tl_opts GAN_metric.tf_fid_stat ~/.keras/BigGAN-PyTorch-1-exp/datasets/tf_fid_stat/fid_stats_tf_cifar100_train_32.npz
+    GAN_metric.tf_inception_model_dir ~/.keras/BigGAN-PyTorch-1-exp/datasets/tf_inception_model
+    --data_root ~/.keras/BigGAN-PyTorch-1-exp/datasets/cifar100
+  codeDir: ../../..
+  gpuNum: 1
+machineList:
+- ip: 192.168.101.33
+  username: user321
+  sshKeyPath: ~/.ssh/id_rsa
+  gpuIndices: 0,1,2,3
+  useActiveGpu: true
+- ip: 192.168.4.234
+  username: zhoupeng
+  sshKeyPath: ~/.ssh/id_rsa
+  port: 300
+  gpuIndices: 1,2,3
+  useActiveGpu: true
+nniManagerIp: localhost

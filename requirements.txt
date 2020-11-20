@@ -1,0 +1,9 @@
+tsmoothie
+gitpython
+matplotlib
+easydict
+pyyaml
+tqdm
+h5py
+imageio
+tensorflow-gpu==1.13.1

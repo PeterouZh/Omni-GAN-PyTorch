@@ -1,0 +1,71 @@
+train_ImageNet32:
+  args:
+    dataset: I32_hdf5
+    use_data_root: true
+    data_root: "datasets/BigGAN-PyTorch-1-exp/ILSVRC_I32.hdf5"
+    index_filename: 'datasets/BigGAN-PyTorch-1-exp/ILSVRC_I32_index.npz'
+    inception_file: "datasets/BigGAN-PyTorch-1-exp/\
+      ILSVRC_I32_hdf5_inception_moments.npz"
+#    batch_size: 256
+    batch_size: 64
+#    num_G_accumulations: 8
+#    num_D_accumulations: 8
+    num_G_accumulations: 1
+    num_D_accumulations: 1
+#    num_D_steps: 1
+    num_D_steps: 4
+    G_lr: 1e-4
+    D_lr: 4e-4
+    D_B2: 0.999
+    G_B2: 0.999
+    G_attn: '0'
+    D_attn: '0'
+    G_nl: inplace_relu
+    D_nl: inplace_relu
+    SN_eps: 1e-6
+    BN_eps: 1e-5
+    adam_eps: 1e-6
+    G_ortho: 0.0
+    G_shared: true
+    G_init: ortho
+    D_init: ortho
+    hier: true
+    dim_z: 120
+    shared_dim: 128
+    G_eval_mode: true
+    G_ch: 96
+    D_ch: 96
+    ema: true
+    use_ema: true
+    ema_start: 20000
+#    test_every: 2000
+    test_every: 1000
+    save_every: 1000
+    num_best_copies: 1
+    num_save_copies: 1
+    seed: 0
+    use_multiepoch_sampler: true
+    num_inception_images: 50000
+#    resume: false
+    resume: true
+    model: "exp.unified_loss.BigGAN_unified_loss"
+    which_train_fn: "exp.unified_loss.train_fns"
+  resume_cfg:
+    weights_root: "results/UnifiedLoss_ImageNet/train_ImageNet32_\
+    20201005-21_42_05_641/biggan/weights/exp"
+#    eval: true
+    eval: false
+  use_unofficial_FID: true
+  Discriminator:
+    weight_decay: 0.0001
+#    weight_decay: 0.0005
+#    weight_decay: 0.001
+#    weight_decay: 0.00005
+#    weight_decay: 0.00001
+#    weight_decay: 0.
+  unified_loss:
+#    gamma: 5.
+    gamma: 1.
+    margin: 0.
+    default_label: 0
+#    default_label: -1

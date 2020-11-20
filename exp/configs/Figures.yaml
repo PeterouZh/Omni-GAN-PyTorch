@@ -1,0 +1,239 @@
+save_early_collapse_on_cifar100:
+  xlabel: "Real images shown to $D$"
+  ylabel: "IS score"
+  fontsize:
+    tick_fs: 14
+    xylabel_fs: 14
+    legend_size: 10
+  clip_x:
+    - 0
+    - 24500096
+#  properties:
+#    xlim:
+#      - 0
+#      - 24960000
+#    ylim:
+#      - 0
+#      - 30
+  get_min_value: true
+  add_auxi_label: false
+  lines:
+    projection_dis_wd_0:
+      result_dir: "results/CIFAR10/train_cifar100_\
+      20201002-19_37_05_825"
+      sub_path: "textdir/evaltf.ma1.IS_mean_tf.log"
+      color: 'blue'
+      properties:
+        label: "projection $D$ (w/o wd)"
+#        marker: "."
+    unified_loss:
+      result_dir: "~/nni-experiments/GViHqCbe/trials/TBmgJ/\
+      TBmgJ/code/results/Unified_GAN_CIFAR100/train_unified_GAN"
+      sub_path: "textdir/evaltf.ma1.IS_mean_tf.log"
+      color: 'red'
+      properties:
+        label: "unified-loss $D$ (w/o wd)"
+#        marker: "."
+    oneside_unified_loss_wd0:
+      result_dir: "results/OneSide_Unified_GAN_CIFAR100/train_one_side_unified_GAN-\
+      20201028_0008_111"
+      sub_path: "textdir/evaltf.ma1.IS_mean_tf.log"
+      color: 'dark_green'
+      properties:
+        label: "one-side unified-loss $D$ (w/o wd)"
+        #        marker: "."
+        ls: "-"
+#        linewidth: 2.5
+    projection_dis_wd_1e-4:
+      result_dir: "results/CIFAR10/train_cifar100_weight_decay_\
+      20201004-11_57_49_873"
+      sub_path: "textdir/evaltf.ma1.IS_mean_tf.log"
+      color: 'blue'
+      properties:
+        label: "projection $D$ (w/ wd)"
+#        marker: "."
+        ls: "--"
+    unified_loss_Dwd5e-4_Gwd1e-3:
+      result_dir: "~/nni-experiments/GViHqCbe/trials/aJ4nR/\
+          aJ4nR/code/results/Unified_GAN_CIFAR100/train_unified_GAN"
+      sub_path: "textdir/evaltf.ma1.IS_mean_tf.log"
+      color: 'red'
+      properties:
+        label: "unified-loss $D$ (w/ wd)"
+        #        marker: "."
+        ls: "--"
+#    unified_loss_wd_5e-4:
+#      result_dir: "~/nni-experiments/GViHqCbe/trials/lGz2H/\
+#      lGz2H/code/results/Unified_GAN_CIFAR100/train_unified_GAN"
+#      sub_path: "textdir/evaltf.ma1.IS_mean_tf.log"
+#      color: 'red'
+#      properties:
+#        label: "unified-loss $D$ (w/ wd)"
+##        marker: "."
+#        ls: "--"
+
+
+  saved_file: "early_collapse_cifar100.pdf"
+
+
+save_early_collapse_Dx_on_cifar100:
+  logits_file:
+    real: textdir/train.D_loss.D_real.log
+    generated: textdir/train.D_loss.D_fake.log
+    validation: textdir/train.D_loss.D_val.log
+  colors:
+    - beauty_green
+    - blue_violet
+    - beauty_light_blue
+#    - black
+  sample_interval: 100
+#  sample_interval: 5
+#  max_iter: 30000
+  fid_file: textdir/evaltf.ma0.FID_tf.log
+  fid_color: red
+  suffix: 'pdf'
+#  suffix: 'png'
+  fontsize:
+    xy_label: 14
+    tick: 14
+  xlabel: "Real images shown to $D$"
+  ylabel: "$D(x)$"
+  ylim:
+    - -25
+    - 350
+  exps:
+    biggan_cifar100:
+      results_dir: "results/CIFAR10/train_cifar100_\
+      20201002-19_37_05_825"
+      anno_offset:
+        - 4100000
+        - -6
+    biggan_weight_decay_cifar100:
+      results_dir: "results/CIFAR10/train_cifar100_weight_decay_\
+      20201004-11_57_49_873"
+      anno_offset:
+        - -4000000
+        - -6
+
+
+save_GAN_cGAN_on_cifar100_IS:
+  xlabel: "Real images shown to $D$"
+  ylabel: "IS score"
+  fontsize:
+    tick_fs: 14
+    xylabel_fs: 14
+    legend_size: 10
+  clip_x:
+    - 0
+    - 24500096
+#  properties:
+#    xlim:
+#      - 0
+#      - 24960000
+#    ylim:
+#      - 0
+#      - 30
+  get_min_value: true
+  add_auxi_label: false
+  lines:
+    stylegan:
+      result_dir: "/media/shhs/disk1/code/stylegan2-pytorch-exp/results/stylegan2/\
+      train_cifar100-20201030_2234_241"
+      sub_path: "textdir/eval.ma1.IS_mean_tf.log"
+      color: 'blue'
+      properties:
+        label: "Unconditional GAN (StyleGAN)"
+    #        marker: "."
+    projection_dis_wd_0:
+      result_dir: "results/CIFAR10/train_cifar100_\
+      20201002-19_37_05_825"
+      sub_path: "textdir/evaltf.ma1.IS_mean_tf.log"
+      color: 'red'
+      properties:
+        label: "Projection-based cGAN (BigGAN)"
+#        marker: "."
+    multihinge_GAN:
+      result_dir: "results/MultiHingeGAN/train_mhingegan_cifar100_\
+      20200918-19_48_55_661"
+      sub_path: "textdir/evaltf.ma1.IS_mean_tf.log"
+      color: 'blue_violet'
+      properties:
+        label: "Classification-based cGAN (Multi-hinge GAN)"
+    #        marker: "."
+    unified_loss_Dwd5e-4_Gwd1e-3:
+      result_dir: "~/nni-experiments/GViHqCbe/trials/aJ4nR/\
+          aJ4nR/code/results/Unified_GAN_CIFAR100/train_unified_GAN"
+      sub_path: "textdir/evaltf.ma1.IS_mean_tf.log"
+      color: 'green'
+      properties:
+        label: "Classification-based cGAN (Unified GAN)"
+        #        marker: "."
+        ls: "-"
+
+  saved_file: "GAN_cGAN_cifar100_IS.pdf"
+
+
+save_GAN_cGAN_on_cifar100_FID:
+  xlabel: "Real images shown to $D$"
+  ylabel: "FID score"
+  fontsize:
+    tick_fs: 14
+    xylabel_fs: 14
+    legend_size: 10
+  clip_x:
+    - 0
+    - 24500096
+  properties:
+#    xlim:
+#      - 0
+#      - 24960000
+    ylim:
+      - 0
+      - 100
+  get_min_value: true
+  add_auxi_label: false
+  lines:
+    stylegan:
+      result_dir: "/media/shhs/disk1/code/stylegan2-pytorch-exp/results/stylegan2/\
+      train_cifar100-20201030_2234_241"
+      sub_path: "textdir/eval.ma0.FID_tf.log"
+      color: 'blue'
+      properties:
+        label: "Unconditional GAN (StyleGAN)"
+    #        marker: "."
+    projection_dis_wd_0:
+      result_dir: "results/CIFAR10/train_cifar100_\
+      20201002-19_37_05_825"
+      sub_path: "textdir/evaltf.ma0.FID_tf.log"
+      color: 'red'
+      properties:
+        label: "Projection-based cGAN (BigGAN)"
+#        marker: "."
+    multihinge_GAN:
+      result_dir: "results/MultiHingeGAN/train_mhingegan_cifar100_\
+      20200918-19_48_55_661"
+      sub_path: "textdir/evaltf.ma0.FID_tf.log"
+      color: 'blue_violet'
+      properties:
+        label: "Classification-based cGAN (Multi-hinge GAN)"
+    #        marker: "."
+    unified_loss_Dwd5e-4_Gwd1e-3:
+      result_dir: "~/nni-experiments/GViHqCbe/trials/aJ4nR/\
+          aJ4nR/code/results/Unified_GAN_CIFAR100/train_unified_GAN"
+      sub_path: "textdir/evaltf.ma0.FID_tf.log"
+      color: 'green'
+      properties:
+        label: "Classification-based cGAN (Unified GAN)"
+        #        marker: "."
+        ls: "-"
+
+  saved_file: "GAN_cGAN_cifar100_FID.pdf"
+
+
+save_grad_unified_loss_sn_sp:
+  min_v: -10
+  max_v: 10
+
+save_grad_unified_loss_sp_sp:
+  min_v: -10
+  max_v: 10

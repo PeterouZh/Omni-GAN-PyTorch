@@ -1,0 +1,150 @@
+train_biggan:
+  args:
+    shuffle: true
+    batch_size: 32
+    dataset: C10
+    use_data_root: true
+    data_root: "datasets/cifar10"
+    num_workers: 0
+    parallel: false
+    num_G_accumulations: 1
+    num_D_accumulations: 1
+    num_epochs: 50000
+    num_D_steps: 5
+    G_ch: 64
+    D_ch: 32
+    G_lr: 2.e-4
+    D_lr: 2.e-4
+    G_ortho: 0.0
+    G_attn: '0'
+    D_attn: '0'
+    G_init: N02
+    D_init: N02
+    ema: true
+#    use_ema: true
+    use_ema: false
+    ema_start: 1000
+    test_every: 5000
+#    test_every: 500
+    save_every: 2000
+    num_best_copies: 5
+    num_save_copies: 2
+    seed: 0
+  train_dataloader:
+    dataset_kwargs:
+      val_split: 0.04
+      train: validate
+  val_dataloader:
+    dataset_kwargs:
+      train: false
+    use_training_sampler: true
+  test_every_epoch: 20
+  GAN_metric:
+    name: TFFIDISScore
+    tf_fid_stat: "datasets/tf_fid_stat/\
+      fid_stats_tf_cifar10_train_32.npz"
+    tf_inception_model_dir: "datasets/tf_inception_model"
+    num_inception_images: 5000
+#    num_inception_images: 50000
+
+
+train_full_conv_disc:
+  base:
+    - train_biggan
+  args:
+    model: "exp.cmconv.net_cmconv_full_conv_discriminator"
+  discriminator:
+    cmconv_out_channel: 1
+    CMConv_cfg:
+      name: "EmbeddingModulatedConv2d"
+      n_classes: 10
+      zero_embedding: false
+      spectral_norm: true
+      ModulatedConv2d_cfg:
+        name: "ModulatedConv2d"
+        kernel_size: 3
+        use_affine: false
+#        use_affine: true
+        demodulate: true
+#        demodulate: false
+        init: "ortho"
+        style_plus_one: true
+
+
+train_biggan_test_D_ch:
+  base:
+    - train_biggan
+  args:
+#    D_ch: 8
+#    D_ch: 16
+#    D_ch: 32
+    D_ch: 64
+
+plot_biggan_D_logits:
+  figure_size: 10
+  logits_file:
+    real: textdir/train.D_logits.D_real.log
+    generated: textdir/train.D_logits.D_fake.log
+    validation: textdir/train.D_logits.D_val.log
+  sample_interval: 100
+#  sample_interval: 5
+#  max_iter: 20000
+  fid_file: textdir/evaltf.ma0.FID_tf.log
+  suffix: 'pdf'
+#  suffix: 'png'
+  fontsize:
+    xy_label: 14
+  exps:
+    D_ch_032:
+      results_dir: "results/CIFAR10_BigGAN_full_conv_D/train_biggan_test_D_ch_\
+        20200918-21_53_12_002"
+    D_ch_064:
+      results_dir: "results/CIFAR10_BigGAN_full_conv_D/train_biggan_test_D_ch_\
+        20200918-21_54_34_282"
+    D_ch_128:
+      results_dir: "results/CIFAR10_BigGAN_full_conv_D/train_biggan_test_D_ch_\
+        20200918-22_26_54_619"
+    D_ch_256:
+      results_dir: "results/CIFAR10_BigGAN_full_conv_D/train_biggan_test_D_ch_\
+        20200918-22_27_31_527"
+
+
+train_full_conv_disc_test_D_ch:
+  base:
+    - train_full_conv_disc
+  args:
+#    D_ch: 8
+#    D_ch: 16
+#    D_ch: 32
+    D_ch: 64
+
+plot_fully_conv_Disc_D_logits:
+  figure_size: 10
+  logits_file:
+    real: textdir/train.D_logits.D_real.log
+    generated: textdir/train.D_logits.D_fake.log
+    validation: textdir/train.D_logits.D_val.log
+#  sample_interval: 100
+  sample_interval: 5
+  max_iter: 30000
+  fid_file: textdir/evaltf.ma0.FID_tf.log
+  suffix: 'pdf'
+#  suffix: 'png'
+  fontsize:
+    xy_label: 14
+  exps:
+    D_ch_032:
+      results_dir: "results/CIFAR10_BigGAN_full_conv_D/train_full_conv_disc_test_D_ch_\
+      20200919-20_33_57_289"
+    D_ch_064:
+      results_dir: "results/CIFAR10_BigGAN_full_conv_D/train_full_conv_disc_test_D_ch_\
+      20200919-20_38_17_372"
+    D_ch_128:
+      results_dir: "results/CIFAR10_BigGAN_full_conv_D/train_full_conv_disc_test_D_ch_\
+      20200919-20_39_24_073"
+    D_ch_256:
+      results_dir: "results/CIFAR10_BigGAN_full_conv_D/train_full_conv_disc_test_D_ch_\
+      20200919-20_40_36_276"
+
+
+
