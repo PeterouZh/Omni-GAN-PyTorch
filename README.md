@@ -4,6 +4,7 @@
 
 ![](.github/cgan_loss.jpg)
 
+<img src="https://github.com/PeterouZh/Omni-GAN-PyTorch/blob/main/.github/GAN_cGAN_cifar100_IS.png" width="100" height="100">
 ![](.github/GAN_cGAN_cifar100_IS.png | width=100)
 ![](.github/GAN_cGAN_cifar100_FID.png)
 
