@@ -78,14 +78,14 @@ class OmniLoss(object):
     pred = torch.rand(b, nc).cuda().requires_grad_()
     y = torch.randint(0, nc-1, (b, )).cuda()
 
-    unified_loss = OmniLoss()
-    D_loss_real = unified_loss(pred=pred, positive=(y, nc-1))
+    omni_loss = OmniLoss()
+    D_loss_real = omni_loss(pred=pred, positive=(y, nc-1))
 
-    D_loss_fake = unified_loss(pred=pred, positive=None, negative=(y, nc-1))
+    D_loss_fake = omni_loss(pred=pred, positive=None, negative=(y, nc-1))
 
-    adv_loss = unified_loss(pred=pred, positive=(y, nc-1))
+    adv_loss = omni_loss(pred=pred, positive=(y, nc-1))
 
-    D_loss_real = unified_loss(pred=pred, positive=(y, nc - 1), default_label=0)
+    D_loss_real = omni_loss(pred=pred, positive=(y, nc - 1), default_label=0)
 
     # b, nc, h, w = 32, 101, 8, 8
     # pred = torch.rand(b, nc, h, w).cuda().requires_grad_()
