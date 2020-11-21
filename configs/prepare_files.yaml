@@ -1,0 +1,20 @@
+calculate_fid_stat_CIFAR:
+  run_func: "TFFIDISScore.test_case_calculate_fid_stat_CIFAR"
+  dataset_name: "cifar10_train"
+  IMS_PER_BATCH: 32
+  img_size: 32
+  DATALOADER:
+    NUM_WORKERS: 0
+  dataset_mapper_cfg:
+    name: CIFAR10DatasetMapper
+  GAN_metric:
+    name: TFFIDISScore
+    tf_fid_stat: "datasets/fid_stats_tf_cifar10_train_32.npz"
+    tf_inception_model_dir: "datasets/tf_inception_model"
+    num_inception_images: 50000
+
+
+
+
+
+

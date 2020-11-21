@@ -15,7 +15,6 @@ from tqdm import tqdm, trange
 from easydict import EasyDict
 from collections import defaultdict
 import importlib
-import nni
 
 import torch
 import torch.nn as nn
@@ -38,7 +37,6 @@ from template_lib.v2.config_cfgnode import update_parser_defaults_from_yaml
 from template_lib.v2.config_cfgnode import global_cfg, get_dict_str, TLCfgNode
 from template_lib.v2.logger import summary_defaultdict2txtfig
 from template_lib.v2.logger import global_textlogger as textlogger
-from template_lib.nni import cfgnode_merge_tunner_params, nni_ss2cfg
 
 import template_lib.v2.GAN.evaluation.tf_FID_IS_score
 
@@ -274,36 +272,12 @@ def run(config):
         print('\n' + config['tl_outdir'])
         IS_mean, IS_std, FID = train_fns.test(G, D, G_ema, z_, y_, state_dict, config, sample,
                                               get_inception_metrics, experiment_name, test_log)
-        if math.isnan(IS_mean):
-          inter_results = {'default': state_dict['last_FID'], 'IS_mean': state_dict['last_IS']}
-        else:
-          inter_results = {'default': FID, 'IS_mean': IS_mean}
-          state_dict['last_FID'] = FID
-          state_dict['last_IS'] = IS_mean
-        nni.report_intermediate_result(inter_results)
+        state_dict['last_FID'] = FID
+        state_dict['last_IS'] = IS_mean
+
     # Increment epoch counter at end of epoch
     state_dict['epoch'] += 1
-  nni.report_final_result(state_dict['best_FID'])
 
-
-def run1(argv_str=None):
-  from template_lib.utils.config import parse_args_and_setup_myargs, config2args
-  from template_lib.utils.modelarts_utils import prepare_dataset
-  run_script = os.path.relpath(__file__, os.getcwd())
-  args1, myargs, _ = parse_args_and_setup_myargs(argv_str, run_script=run_script, start_tb=False)
-  myargs.args = args1
-  myargs.config = getattr(myargs.config, args1.command)
-
-  if hasattr(myargs.config, 'datasets'):
-    prepare_dataset(myargs.config.datasets, cfg=myargs.config)
-
-  parser = utils.prepare_parser()
-  args = parser.parse_args([])
-  args = config2args(myargs.config.args, args)
-
-  args.base_root = os.path.join(myargs.args.outdir, 'biggan')
-
-  main(config=EasyDict(vars(args)), myargs=myargs)
 
 def main():
   logger = logging.getLogger('tl')
@@ -313,21 +287,12 @@ def main():
 
   args = parser.parse_args()
   args.base_root = os.path.join(args.tl_outdir, 'biggan')
-  config = EasyDict(vars(args))
+  opt = EasyDict(vars(args))
 
-  # get parameters form tuner
-  tuner_params = nni.get_next_parameter()
-  logger.info("\ntuner_params: \n" + get_dict_str(nni_ss2cfg(tuner_params)))
-
-  TLCfgNode.merge_a_into_b(tuner_params, config)
-  logger.info("\nconfig merged tunner_params: \n" + get_dict_str(config))
-  opt = EasyDict(config)
-
-  cfgnode_merge_tunner_params(global_cfg, tuner_params)
-  logger.info(f"\nglobal_cfg merged tunner_params: \n" + get_dict_str(global_cfg))
+  logger.info(f"\nglobal_cfg: \n" + get_dict_str(global_cfg))
   global_cfg.dump_to_file_with_command(f"{opt.tl_outdir}/config_command.yaml", command=opt.tl_command)
 
-  run(config)
+  run(opt)
 
 if __name__ == '__main__':
   main()
