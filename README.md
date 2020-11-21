@@ -81,7 +81,7 @@ python exp/omni_loss/train.py \
             args.data_root datasets/cifar100
 
 ```
-
+The metrics are saved in `results/train_Omni_GAN_cifar100/textdir`.
 
 ### Train on CIFAR10
 ```bash
@@ -97,3 +97,4 @@ python exp/omni_loss/train.py \
             args.data_root datasets/cifar10
 
 ```
+The metrics are saved in `results/train_Omni_GAN_cifar10/textdir`.
