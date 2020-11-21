@@ -72,7 +72,7 @@ python template_lib/v2/GAN/evaluation/tf_FID_IS_score.py \
 export CUDA_VISIBLE_DEVICES=2
 export PYTHONPATH=./:./BigGAN_PyTorch_1_lib 
 export LD_LIBRARY_PATH=$HOME/.keras/envs/cuda-10.0/lib64:$HOME/.keras/envs/cudnn-10.0-linux-x64-v7.6.5.32/lib64 
-python exp/unified_loss/train.py \
+python exp/omni_loss/train.py \
   --tl_config_file configs/omni_gan_cifar100.yaml \
   --tl_command train_Omni_GAN \
   --tl_outdir results/train_Omni_GAN_cifar100 \
@@ -88,7 +88,7 @@ python exp/unified_loss/train.py \
 export CUDA_VISIBLE_DEVICES=1
 export PYTHONPATH=./:./BigGAN_PyTorch_1_lib 
 export LD_LIBRARY_PATH=$HOME/.keras/envs/cuda-10.0/lib64:$HOME/.keras/envs/cudnn-10.0-linux-x64-v7.6.5.32/lib64 
-python exp/unified_loss/train.py \
+python exp/omni_loss/train.py \
   --tl_config_file configs/omni_gan_cifar10.yaml \
   --tl_command train_Omni_GAN \
   --tl_outdir results/train_Omni_GAN_cifar10 \
@@ -97,11 +97,3 @@ python exp/unified_loss/train.py \
             args.data_root datasets/cifar10
 
 ```
-
-Notes:
-
-- Please put the ImageNet dataset `ILSVRC/Data/CLS-LOC/train` into `~/biggan/` dir, where `~` means your home dir. You can change this position by modifying `line 7` of `exp/biggan_to_huawei/BigGAN_ImageNet128_to_HuaWei.yaml`.
-- After the program finishes, two files will be saved in `~/biggan/`, i.e., `ILSVRC_I128_index.npz` and `ILSVRC_I128.hdf5` (its size is about 63G). 
-- This may take a few minutes, please save the files so that you don't have to repeat this procedure every time you train.
-
-

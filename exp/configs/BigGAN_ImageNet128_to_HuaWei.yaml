@@ -1,9 +1,0 @@
-make_hdf5_ImageNet128:
-  args:
-    dataset: I128
-    num_workers: 16
-#    num_workers: 8
-    batch_size: 256
-    data_root: "datasets/ILSVRC/Data/CLS-LOC/train"
-  index_filename: 'datasets/BigGAN-PyTorch-1-exp/ILSVRC_{}_index.npz'
-  saved_hdf5: "datasets/BigGAN-PyTorch-1-exp/ILSVRC_{}.hdf5"

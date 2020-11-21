@@ -27,8 +27,8 @@ train_Omni_GAN:
     num_best_copies: 1
     num_save_copies: 1
     seed: 0
-    model: exp.unified_loss.BigGAN_unified_loss
-    which_train_fn: exp.unified_loss.train_fns
+    model: exp.omni_loss.BigGAN_omni_loss
+    which_train_fn: exp.omni_loss.train_fns
     sv_log_interval: -1
   train_dataloader:
     dataset_kwargs:
@@ -47,7 +47,7 @@ train_Omni_GAN:
     weight_decay: 0.0005
   Generator:
     weight_decay: 0.001
-  unified_loss:
+  omni_loss:
     mode: p_and_n
     gamma: 1.0
     margin: 0.0

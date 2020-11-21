@@ -15,7 +15,7 @@ import losses
 # from template_lib.v2.config import global_cfg
 from template_lib.v2.config_cfgnode import global_cfg
 
-from .unified_loss import UnifiedLoss
+from .omni_loss import OmniLoss
 
 # Dummy training function for debugging
 def dummy_training_function():
@@ -27,10 +27,10 @@ def dummy_training_function():
 def GAN_training_function(G, D, GD, z_, y_, ema, state_dict, config, val_loaders):
   default_dict = collections.defaultdict(dict)
 
-  unified_loss = global_cfg.unified_loss
-  margin, gamma = unified_loss.margin, unified_loss.gamma
+  omni_loss = global_cfg.omni_loss
+  margin, gamma = omni_loss.margin, omni_loss.gamma
 
-  unified_loss = UnifiedLoss(margin=margin, gamma=gamma)
+  omni_loss = OmniLoss(margin=margin, gamma=gamma)
 
   def train(x, y):
     G.optim.zero_grad()
@@ -61,24 +61,25 @@ def GAN_training_function(G, D, GD, z_, y_, ema, state_dict, config, val_loaders
 
         D_real_positive = [y[counter], config['n_classes']]
         # D_real_negative = (config['n_classes'] + 1,)
-        if global_cfg.unified_loss.mode == 'only_p':
-          D_loss_real = unified_loss(pred=D_real, positive=D_real_positive, default_label=-1)
-        elif global_cfg.unified_loss.mode == 'p_and_n':
-          D_loss_real = unified_loss(pred=D_real, positive=D_real_positive, default_label=0)
-        elif global_cfg.unified_loss.mode == 'one_side':
-          D_loss_real = unified_loss(pred=D_real, positive=D_real_positive, default_label=-1)
+        if global_cfg.omni_loss.mode == 'only_p':
+          assert 0, "deprecated"
+          D_loss_real = omni_loss(pred=D_real, positive=D_real_positive, default_label=-1)
+        elif global_cfg.omni_loss.mode == 'p_and_n':
+          D_loss_real = omni_loss(pred=D_real, positive=D_real_positive, default_label=0)
+        elif global_cfg.omni_loss.mode == 'one_side':
+          D_loss_real = omni_loss(pred=D_real, positive=D_real_positive, default_label=-1)
         else:
           assert 0
 
         D_fake_positive = (config['n_classes'] + 1,)
         # D_fake_negative = (y_[:config['batch_size']], config['n_classes'])
-        if global_cfg.unified_loss.mode == 'only_p':
-          D_loss_fake = unified_loss(pred=D_fake, positive=D_fake_positive, default_label=-1)
-        elif global_cfg.unified_loss.mode == 'p_and_n':
-          D_loss_fake = unified_loss(pred=D_fake, positive=D_fake_positive, default_label=0)
-        elif global_cfg.unified_loss.mode == 'one_side':
+        if global_cfg.omni_loss.mode == 'only_p':
+          D_loss_fake = omni_loss(pred=D_fake, positive=D_fake_positive, default_label=-1)
+        elif global_cfg.omni_loss.mode == 'p_and_n':
+          D_loss_fake = omni_loss(pred=D_fake, positive=D_fake_positive, default_label=0)
+        elif global_cfg.omni_loss.mode == 'one_side':
           D_fake_negative = [y_[:config['batch_size']], config['n_classes']]
-          D_loss_fake = unified_loss(pred=D_fake, positive=None, negative=D_fake_negative, default_label=-1)
+          D_loss_fake = omni_loss(pred=D_fake, positive=None, negative=D_fake_negative, default_label=-1)
         else:
           assert 0
 
@@ -113,12 +114,12 @@ def GAN_training_function(G, D, GD, z_, y_, ema, state_dict, config, val_loaders
       # G_loss = losses.generator_loss(D_fake)
       G_fake_positive = (y_, config['n_classes'])
       # G_fake_negative = (config['n_classes'] + 1,)
-      if global_cfg.unified_loss.mode == 'only_p':
-        G_loss = unified_loss(pred=D_fake, positive=G_fake_positive, default_label=-1)
-      elif global_cfg.unified_loss.mode == 'p_and_n':
-        G_loss = unified_loss(pred=D_fake, positive=G_fake_positive, default_label=0)
-      elif global_cfg.unified_loss.mode == 'one_side':
-        G_loss = unified_loss(pred=D_fake, positive=G_fake_positive, default_label=-1)
+      if global_cfg.omni_loss.mode == 'only_p':
+        G_loss = omni_loss(pred=D_fake, positive=G_fake_positive, default_label=-1)
+      elif global_cfg.omni_loss.mode == 'p_and_n':
+        G_loss = omni_loss(pred=D_fake, positive=G_fake_positive, default_label=0)
+      elif global_cfg.omni_loss.mode == 'one_side':
+        G_loss = omni_loss(pred=D_fake, positive=G_fake_positive, default_label=-1)
       else:
         assert 0
       G_loss = G_loss / float(config['num_G_accumulations'])
@@ -149,15 +150,15 @@ def GAN_training_function(G, D, GD, z_, y_, ema, state_dict, config, val_loaders
 
         D_val_positive = (val_y, config['n_classes'])
         # D_val_negative = (config['n_classes'] + 1,)
-        if global_cfg.unified_loss.mode == 'only_p':
-          D_val_loss = unified_loss(pred=D_val, positive=D_val_positive, default_label=-1)
-        elif global_cfg.unified_loss.mode == 'p_and_n':
-          D_val_loss = unified_loss(pred=D_val, positive=D_val_positive, default_label=0)
-        elif global_cfg.unified_loss.mode == 'one_side':
-          D_val_loss = unified_loss(pred=D_val, positive=D_val_positive, default_label=-1)
+        if global_cfg.omni_loss.mode == 'only_p':
+          D_val_loss = omni_loss(pred=D_val, positive=D_val_positive, default_label=-1)
+        elif global_cfg.omni_loss.mode == 'p_and_n':
+          D_val_loss = omni_loss(pred=D_val, positive=D_val_positive, default_label=0)
+        elif global_cfg.omni_loss.mode == 'one_side':
+          D_val_loss = omni_loss(pred=D_val, positive=D_val_positive, default_label=-1)
         else:
           assert 0
-        # D_val_loss = unified_loss(pred=D_val, positive=D_val_positive, negative=D_val_negative)
+        # D_val_loss = omni_loss(pred=D_val, positive=D_val_positive, negative=D_val_negative)
         out.update({'D_val_loss': D_val_loss.item(), })
 
     
