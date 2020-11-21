@@ -69,7 +69,7 @@ python template_lib/v2/GAN/evaluation/tf_FID_IS_score.py \
 
 ### Train on CIFAR100
 ```bash
-export CUDA_VISIBLE_DEVICES=2
+export CUDA_VISIBLE_DEVICES=1
 export PYTHONPATH=./:./BigGAN_PyTorch_1_lib 
 export LD_LIBRARY_PATH=$HOME/.keras/envs/cuda-10.0/lib64:$HOME/.keras/envs/cudnn-10.0-linux-x64-v7.6.5.32/lib64 
 python exp/omni_loss/train.py \
@@ -85,7 +85,7 @@ python exp/omni_loss/train.py \
 
 ### Train on CIFAR10
 ```bash
-export CUDA_VISIBLE_DEVICES=1
+export CUDA_VISIBLE_DEVICES=2
 export PYTHONPATH=./:./BigGAN_PyTorch_1_lib 
 export LD_LIBRARY_PATH=$HOME/.keras/envs/cuda-10.0/lib64:$HOME/.keras/envs/cudnn-10.0-linux-x64-v7.6.5.32/lib64 
 python exp/omni_loss/train.py \
