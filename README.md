@@ -19,6 +19,7 @@
 
 
 ```bash
+git clone --recursive https://github.com/PeterouZh/Omni-GAN-PyTorch.git
 cd Omni-GAN-PyTorch
 conda create -y --name omnigan python=3.6.7 
 conda activate omnigan
