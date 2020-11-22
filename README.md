@@ -79,7 +79,7 @@ python exp/omni_loss/train.py \
   --tl_opts GAN_metric.tf_fid_stat datasets/fid_stats_tf_cifar100_train_32.npz \
             GAN_metric.tf_inception_model_dir datasets/tf_inception_model \
             args.data_root datasets/cifar100 \
-  --tl_outdir results/train_Omni_GAN_cifar100_3
+  --tl_outdir results/train_Omni_GAN_cifar100
 ```
 The metrics are saved in `results/train_Omni_GAN_cifar100/textdir`.
 
