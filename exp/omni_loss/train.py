@@ -193,11 +193,9 @@ def run(config):
   state_dict['shown_images'] = state_dict['itr'] * D_batch_size
 
   if 'eval_cfg' in global_cfg and global_cfg.eval_cfg.eval:
-    # G_ema.eval()
     print('\n' + config['tl_outdir'])
     logger.info(f'Loading model:\n {global_cfg.eval_cfg.path}')
     G_ema.load_state_dict(torch.load(os.path.expanduser(global_cfg.eval_cfg.path)), strict=True)
-    loaded_state_dict = torch.load(os.path.expanduser(global_cfg.eval_cfg.path.replace('G_ema', 'state_dict')))
     state_dict['best_IS'] = float('inf')
     state_dict['best_FID'] = 0
     IS_mean, IS_std, FID = train_fns.test(G, D, G_ema, z_, y_, state_dict, config, sample,

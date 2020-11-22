@@ -40,7 +40,7 @@ train_Omni_GAN:
   test_every_images: 500000
   GAN_metric:
     name: TFFIDISScore
-    tf_fid_stat: datasets/tf_fid_stat/fid_stats_tf_cifar100_train_32.npz
+    tf_fid_stat: datasets/fid_stats_tf_cifar100_train_32.npz
     tf_inception_model_dir: datasets/tf_inception_model
     num_inception_images: 50000
   Discriminator:
@@ -52,4 +52,14 @@ train_Omni_GAN:
     gamma: 1.0
     margin: 0.0
   optim_type: adam
+
+
+eval_trained_model:
+  base: train_Omni_GAN
+  eval_cfg:
+    eval: true
+    path: "datasets/G_ema_best_FID_cifar100.pth"
+
+
+
 

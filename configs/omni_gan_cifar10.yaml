@@ -52,3 +52,11 @@ train_Omni_GAN:
     gamma: 1.0
     margin: 0.0
   optim_type: 'adam'
+
+
+eval_trained_model:
+  base: train_Omni_GAN
+  eval_cfg:
+    eval: true
+    path: "datasets/G_ema_best_FID_cifar10.pth"
+
