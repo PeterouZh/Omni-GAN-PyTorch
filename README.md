@@ -141,6 +141,16 @@ python exp/omni_loss/train.py \
   --tl_outdir results/eval_trained_model_cifar10
 ```
 
+## Acknowledgments
+
+- BigGAN implemented from [https://github.com/ajbrock/BigGAN-PyTorch](https://github.com/ajbrock/BigGAN-PyTorch).
+- Multi-label classification loss derived by [Jianlin Su](https://kexue.fm/archives/7359).
+
+
+
+
+
+
 
 
 
