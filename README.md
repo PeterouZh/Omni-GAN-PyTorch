@@ -1,6 +1,6 @@
 ## Omni-GAN
 
-Omni-GAN is a classification-based cGAN and enjoys both high generation quality and a low risk of mode collapse. Omni-GAN is more flexible than other cGANs and has the ability to discriminate samples with multiple positive labels. We believe that Omni-GAN open the door to a wider range of applications.
+Omni-GAN is a classification-based cGAN and enjoys both high generation quality and a low risk of mode collapse. Omni-GAN is more flexible than other cGANs and has the ability to discriminate samples with multiple positive labels. We believe that Omni-GAN opens the door to a wider range of applications.
 
 ### Comparision of several cGANs
 
