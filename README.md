@@ -37,20 +37,6 @@ Cuda and cudnn are needed by the TensorFlow which is only utilized for the sake 
 We provide the FID statistics files calculated on CIFAR10 and CIFAR100 at [OneDrive](https://sjtueducn-my.sharepoint.com/:f:/g/personal/zhoupengcv_sjtu_edu_cn/Ek0QSX1UhylDjVYdmXYxRtcBMLs54AYD4E3CwZlWBXZmPA?e=BzWa9D) respectively. Download them and put them into the `datasets` dir. 
 Of course, you can calculate these files by yourself. Below is the command. 
 
-- CIFAR100
-```bash
-export LD_LIBRARY_PATH=$HOME/.keras/envs/cuda-10.0/lib64:$HOME/.keras/envs/cudnn-10.0-linux-x64-v7.6.5.32/lib64
-export CUDA_VISIBLE_DEVICES=0
-export PYTHONPATH=./
-python template_lib/v2/GAN/evaluation/tf_FID_IS_score.py \
-  --tl_config_file configs/prepare_files.yaml \
-  --tl_command calculate_fid_stat_CIFAR \
-  --tl_outdir results/calculate_fid_stat_CIFAR100 \
-  --tl_opts dataset_name cifar100_train \
-            dataset_mapper_cfg.name CIFAR100DatasetMapper \
-            GAN_metric.tf_fid_stat datasets/fid_stats_tf_cifar100_train_32.npz \
-            GAN_metric.tf_inception_model_dir datasets/tf_inception_model
-```
 
 - CIFAR10
 ```bash
@@ -67,22 +53,25 @@ python template_lib/v2/GAN/evaluation/tf_FID_IS_score.py \
             GAN_metric.tf_inception_model_dir datasets/tf_inception_model
 ```
 
+- CIFAR100
+```bash
+export LD_LIBRARY_PATH=$HOME/.keras/envs/cuda-10.0/lib64:$HOME/.keras/envs/cudnn-10.0-linux-x64-v7.6.5.32/lib64
+export CUDA_VISIBLE_DEVICES=0
+export PYTHONPATH=./
+python template_lib/v2/GAN/evaluation/tf_FID_IS_score.py \
+  --tl_config_file configs/prepare_files.yaml \
+  --tl_command calculate_fid_stat_CIFAR \
+  --tl_outdir results/calculate_fid_stat_CIFAR100 \
+  --tl_opts dataset_name cifar100_train \
+            dataset_mapper_cfg.name CIFAR100DatasetMapper \
+            GAN_metric.tf_fid_stat datasets/fid_stats_tf_cifar100_train_32.npz \
+            GAN_metric.tf_inception_model_dir datasets/tf_inception_model
+```
+
+
 ## Evaluation
 
 We provide trained models on CIFAR10 and CIFAR100 at [OneDrive](https://sjtueducn-my.sharepoint.com/:f:/g/personal/zhoupengcv_sjtu_edu_cn/Ek0QSX1UhylDjVYdmXYxRtcBMLs54AYD4E3CwZlWBXZmPA?e=BzWa9D). Download them and put them in `datasets` dir.
-
-### CIFAR100
-```bash
-export CUDA_VISIBLE_DEVICES=0
-export PYTHONPATH=./:./BigGAN_PyTorch_1_lib 
-export LD_LIBRARY_PATH=$HOME/.keras/envs/cuda-10.0/lib64:$HOME/.keras/envs/cudnn-10.0-linux-x64-v7.6.5.32/lib64 
-python exp/omni_loss/train.py \
-  --tl_config_file configs/omni_gan_cifar100.yaml \
-  --tl_command eval_trained_model \
-  --tl_opts eval_cfg.path datasets/G_ema_best_FID_cifar100.pth \
-            GAN_metric.tf_fid_stat datasets/fid_stats_tf_cifar100_train_32.npz \
-  --tl_outdir results/eval_trained_model_cifar100 
-```
 
 ### CIFAR10
 ```bash
@@ -109,25 +98,22 @@ python exp/omni_loss/train.py \
   --tl_outdir results/eval_trained_model_cifar10
 ```
 
-
-## Train
-
-### Train on CIFAR100
+### CIFAR100
 ```bash
 export CUDA_VISIBLE_DEVICES=0
 export PYTHONPATH=./:./BigGAN_PyTorch_1_lib 
 export LD_LIBRARY_PATH=$HOME/.keras/envs/cuda-10.0/lib64:$HOME/.keras/envs/cudnn-10.0-linux-x64-v7.6.5.32/lib64 
 python exp/omni_loss/train.py \
   --tl_config_file configs/omni_gan_cifar100.yaml \
-  --tl_command train_Omni_GAN \
-  --tl_opts GAN_metric.tf_fid_stat datasets/fid_stats_tf_cifar100_train_32.npz \
-            GAN_metric.tf_inception_model_dir datasets/tf_inception_model \
-            args.data_root datasets/cifar100 \
-  --tl_outdir results/train_Omni_GAN_cifar100
+  --tl_command eval_trained_model \
+  --tl_opts eval_cfg.path datasets/G_ema_best_FID_cifar100.pth \
+            GAN_metric.tf_fid_stat datasets/fid_stats_tf_cifar100_train_32.npz \
+  --tl_outdir results/eval_trained_model_cifar100 
 ```
-The metrics are saved in `results/train_Omni_GAN_cifar100/textdir`.
 
-### Train on CIFAR10
+## Train Omni-GAN
+
+### CIFAR10
 ```bash
 export CUDA_VISIBLE_DEVICES=0
 export PYTHONPATH=./:./BigGAN_PyTorch_1_lib 
@@ -143,6 +129,50 @@ python exp/omni_loss/train.py \
 ```
 The metrics are saved in `results/train_Omni_GAN_cifar10/textdir`.
 
+### CIFAR100
+```bash
+export CUDA_VISIBLE_DEVICES=0
+export PYTHONPATH=./:./BigGAN_PyTorch_1_lib 
+export LD_LIBRARY_PATH=$HOME/.keras/envs/cuda-10.0/lib64:$HOME/.keras/envs/cudnn-10.0-linux-x64-v7.6.5.32/lib64 
+python exp/omni_loss/train.py \
+  --tl_config_file configs/omni_gan_cifar100.yaml \
+  --tl_command train_Omni_GAN \
+  --tl_opts GAN_metric.tf_fid_stat datasets/fid_stats_tf_cifar100_train_32.npz \
+            GAN_metric.tf_inception_model_dir datasets/tf_inception_model \
+            args.data_root datasets/cifar100 \
+  --tl_outdir results/train_Omni_GAN_cifar100
+```
+The metrics are saved in `results/train_Omni_GAN_cifar100/textdir`.
+
+## Train BigGAN
+
+### CIFAR10
+```bash
+export CUDA_VISIBLE_DEVICES=0
+export PYTHONPATH=./exp:./:./BigGAN_PyTorch_1_lib
+export LD_LIBRARY_PATH=$HOME/.keras/envs/cuda-10.0/lib64:$HOME/.keras/envs/cudnn-10.0-linux-x64-v7.6.5.32/lib64 
+python BigGAN_PyTorch_1_lib/train.py \
+  --tl_config_file configs/biggan_cifar.yaml \
+  --tl_command train_BigGAN_c10 \
+  --tl_outdir results/train_BigGAN_cifar10 \
+  --tl_opts GAN_metric.tf_fid_stat datasets/fid_stats_tf_cifar10_train_32.npz \
+            GAN_metric.tf_inception_model_dir datasets/tf_inception_model \
+            args.data_root datasets/cifar10
+```
+
+### CIFAR100
+```bash
+export CUDA_VISIBLE_DEVICES=0
+export PYTHONPATH=./exp:./:./BigGAN_PyTorch_1_lib
+export LD_LIBRARY_PATH=$HOME/.keras/envs/cuda-10.0/lib64:$HOME/.keras/envs/cudnn-10.0-linux-x64-v7.6.5.32/lib64 
+python BigGAN_PyTorch_1_lib/train.py \
+  --tl_config_file configs/biggan_cifar.yaml \
+  --tl_command train_BigGAN_c100 \
+  --tl_outdir results/train_BigGAN_cifar100 \
+  --tl_opts GAN_metric.tf_fid_stat datasets/fid_stats_tf_cifar100_train_32.npz \
+            GAN_metric.tf_inception_model_dir datasets/tf_inception_model \
+            args.data_root datasets/cifar100
+```
 
 ## Acknowledgments
 
