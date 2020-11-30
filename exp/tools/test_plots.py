@@ -43,7 +43,7 @@ class TestingPlot(unittest.TestCase):
     dd['/home/user321/user/code_sync/Omni-GAN-PyTorch/results/train_BigGAN_cifar100'] = \
       {'BigGAN-c100': log_file, }
 
-    dd['properties'] = {'title': title, 'ylim': [0, 300]}
+    dd['properties'] = {'title': title, 'ylim': [0, 30]}
     default_dicts.append(dd)
     show_max.append(False)
 
@@ -70,7 +70,7 @@ class TestingPlot(unittest.TestCase):
     dd['/home/user321/user/code_sync/Omni-GAN-PyTorch/results/train_BigGAN_cifar10'] = \
       {'BigGAN-c10': log_file, }
 
-    dd['properties'] = {'title': title, 'ylim': [0, 300]}
+    dd['properties'] = {'title': title, 'ylim': [0, 30]}
     default_dicts.append(dd)
     show_max.append(False)
 
