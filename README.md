@@ -9,6 +9,7 @@ Omni-GAN is a classification-based cGAN and enjoys both high generation quality 
 - [ ] Training on ImageNet 256x256 dataset
 - [x] Training on ImageNet 128x128 dataset
 
+===========================================================
 ### Updates
 
 #### **2020-12-23**: Results on ImageNet (128x128 resolution)
@@ -19,6 +20,8 @@ Since I recently acquired GPU resources, I trained Omni-GAN on ImageNet datasets
 <img src=.github/save_OmniGAN_ImageNet128_IS.png width="400" />
 <img src=.github/save_OmniGAN_ImageNet128_FID.png width="400" />
 </p>
+
+===========================================================
 
 ### Comparision of several cGANs
 
