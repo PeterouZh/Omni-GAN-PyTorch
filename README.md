@@ -17,7 +17,7 @@ Omni-GAN is a classification-based cGAN and enjoys both high generation quality 
 Since I recently acquired GPU resources, I trained Omni-GAN on ImageNet datasets (with 128x128 resolution). Omni-GAN only needs one day to reach the IS score of BigGAN which is trained for two weeks!  Experiments were conducted on 8xV100 (32GB VRAM each). Below are the IS and FID curves. We will release the trained models to benefit the research of the community.
 
 <p float="left">
-<img src=.github/save_OmniGAN_ImageNet128_IS.png width="400" />
+<img src=.github/save_OmniGAN_ImageNet128_IS.pdf.png width="400" />
 <img src=.github/save_OmniGAN_ImageNet128_FID.png width="400" />
 </p>
 
