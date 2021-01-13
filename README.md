@@ -18,7 +18,7 @@ Since I recently acquired GPU resources, I trained Omni-GAN on ImageNet datasets
 
 <p float="left">
 <img src=.github/save_OmniGAN_ImageNet128_IS.pdf.png width="400" />
-<img src=.github/save_OmniGAN_ImageNet128_FID.png width="400" />
+<img src=.github/save_OmniGAN_ImageNet128_FID.pdf.png width="400" />
 </p>
 
 ===========================================================
