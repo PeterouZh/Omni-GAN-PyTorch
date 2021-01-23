@@ -9,7 +9,7 @@ train_Omni_GAN:
     num_G_accumulations: 1
     num_D_accumulations: 1
     num_epochs: 1000
-    num_D_steps: 4
+    num_D_steps: 3
     G_ch: 64
     D_ch: 64
     G_lr: 0.0002
