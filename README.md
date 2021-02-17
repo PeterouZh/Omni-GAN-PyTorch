@@ -12,7 +12,9 @@ Omni-GAN is a classification-based cGAN and enjoys both high generation quality 
 ===========================================================
 ### Updates
 
-#### **2021-02-17** Results on ImageNet (256x256 resolution)
+#### **2021-02-17**: Results on ImageNet (256x256 resolution)
+
+The ImageNet 256x256 experiment requires much longer training time. For example, it took about thirty days to train the BigGAN using eight v100 GPUs, and then the BigGAN began to collapse. Omni-GAN enjoys faster convergence and superior performance than BigGAN in terms of both IS and FID. To see if the Omni-GAN will collapse, we trained Omni-GAN for more epochs and no mode collapse is observed.
 
 <p float="left">
 <img src=.github/save_OmniGAN_ImageNet256_IS.pdf.png width="400" />
