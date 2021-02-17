@@ -6,6 +6,7 @@ Omni-GAN is a classification-based cGAN and enjoys both high generation quality 
 
 ### TODO
 
+- [ ] DGP experiments with pretrained Omni-GAN models
 - [ ] Release training code for ImageNet experiments
 - [x] Resutls on ImageNet 256x256 dataset
 - [x] Results on ImageNet 128x128 dataset
