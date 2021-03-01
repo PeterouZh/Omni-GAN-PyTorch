@@ -2,8 +2,6 @@
 
 This repository contains code for the paper, [Omni-GAN: On the Secrets of cGANs and Beyond](https://arxiv.org/abs/2011.13074).
 
-Omni-GAN is a classification-based cGAN and enjoys both high generation quality and a low risk of mode collapse. Omni-GAN is more flexible than other cGANs and has the ability to discriminate samples with multiple positive labels. We believe that Omni-GAN opens the door to a wider range of applications.
-
 ### TODO
 
 - [ ] DGP experiments with pretrained Omni-GAN models
