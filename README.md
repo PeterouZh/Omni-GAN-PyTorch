@@ -23,10 +23,6 @@ The ImageNet 256x256 experiment requires much longer training time. For example,
 <img src=.github/save_OmniGAN_ImageNet256_FID.pdf.png width="400" />
 </p>
 
-#### **2021-01-19**
-
-I am very sad that the current review of our paper is not so good. Thus I decide not to disclose the details of the experiment on ImageNet 128 x 128. All code and hyperparameters for the ImageNet 128x128/256x256 experiments will not be made public unless our paper is accepted. Thanks for your interest.
-
 #### **2020-12-23**: Results on ImageNet (128x128 resolution)
 
 Since I recently acquired GPU resources, I trained Omni-GAN on ImageNet datasets (with 128x128 resolution). Omni-GAN only needs one day to reach the IS score of BigGAN which is trained for two weeks!  Experiments were conducted on 8xV100 (32GB VRAM each). Below are the IS and FID curves. We will release the trained models to benefit the research of the community.
