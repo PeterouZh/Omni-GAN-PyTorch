@@ -4,10 +4,12 @@ This repository contains code for the paper, [Omni-GAN: On the Secrets of cGANs 
 
 ### TODO
 
-- [ ] DGP experiments with pretrained Omni-GAN models
-- [ ] Release training code for ImageNet experiments
-- ✔️ Resutls on ImageNet 256x256 dataset
-- ✔️ Results on ImageNet 128x128 dataset
+⬜️ DGP experiments with pretrained Omni-GAN models  
+⬜️ Release training code for ImageNet experiments  
+✔️ Resutls on ImageNet 256x256 dataset  
+✔️ Results on ImageNet 128x128 dataset  
+
+
 
 ===========================================================
 ### Updates
