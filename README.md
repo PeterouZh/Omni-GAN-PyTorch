@@ -25,6 +25,9 @@ We invented Omni-INR-GAN, which is more friendly to GAN inversion tasks. Please 
 - Colorization
 
 [https://www.bilibili.com/video/BV1nZ4y1A7H8?share_source=copy_web](https://www.bilibili.com/video/BV1nZ4y1A7H8?share_source=copy_web)
+<p float="left">
+<img src=.github/colorization.png width="800" />
+</p>
 
 - Generating images of arbitrary resolution
 
@@ -33,6 +36,9 @@ We invented Omni-INR-GAN, which is more friendly to GAN inversion tasks. Please 
 - Super-resolution x60+
 
 [https://www.bilibili.com/video/BV1Rh411S7Eg?share_source=copy_web](https://www.bilibili.com/video/BV1Rh411S7Eg?share_source=copy_web)
+<p float="left">
+<img src=.github/SR60.png width="800" />
+</p>
 
 #### **2021-02-17**: Results on ImageNet (256x256 resolution)
 
