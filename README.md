@@ -18,6 +18,10 @@ This repository contains code for the paper, [Omni-GAN: On the Secrets of cGANs 
 
 We invented Omni-INR-GAN, which is more friendly to GAN inversion tasks. Please see our paper [Omni-GAN: On the Secrets of cGANs and Beyond](https://arxiv.org/abs/2011.13074).
 
+<p float="left">
+<img src=.github/truncation_curve.png width="600" />
+</p>
+
 - Colorization
 
 [https://www.bilibili.com/video/BV1nZ4y1A7H8?share_source=copy_web](https://www.bilibili.com/video/BV1nZ4y1A7H8?share_source=copy_web)
