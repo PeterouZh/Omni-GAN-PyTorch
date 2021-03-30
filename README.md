@@ -20,15 +20,15 @@ We invented Omni-INR-GAN, which is more friendly to GAN inversion tasks. Please 
 
 - Colorization
 
-<iframe src="//player.bilibili.com/player.html?aid=374863324&bvid=BV1nZ4y1A7H8&cid=317108147&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+[https://www.bilibili.com/video/BV1nZ4y1A7H8?share_source=copy_web](https://www.bilibili.com/video/BV1nZ4y1A7H8?share_source=copy_web)
 
 - Generating images of arbitrary resolution
 
-<iframe src="//player.bilibili.com/player.html?aid=374759654&bvid=BV1SZ4y1w7gu&cid=317109017&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+[https://www.bilibili.com/video/BV1SZ4y1w7gu?share_source=copy_web](https://www.bilibili.com/video/BV1SZ4y1w7gu?share_source=copy_web)
 
 - Super-resolution x60+
 
-<iframe src="//player.bilibili.com/player.html?aid=204818473&bvid=BV1Rh411S7Eg&cid=317109313&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+[https://www.bilibili.com/video/BV1Rh411S7Eg?share_source=copy_web](https://www.bilibili.com/video/BV1Rh411S7Eg?share_source=copy_web)
 
 #### **2021-02-17**: Results on ImageNet (256x256 resolution)
 
