@@ -4,8 +4,8 @@ This repository contains code for the paper, [Omni-GAN: On the Secrets of cGANs 
 
 ### TODO
 
-⬜️ DGP experiments with pretrained Omni-GAN models  
 ⬜️ Release training code for ImageNet experiments  
+✔️ DGP experiments with pretrained Omni-INR-GAN models  
 ✔️ Resutls on ImageNet 256x256 dataset  
 ✔️ Results on ImageNet 128x128 dataset  
 
@@ -13,6 +13,22 @@ This repository contains code for the paper, [Omni-GAN: On the Secrets of cGANs 
 
 ===========================================================
 ### Updates
+
+#### **2021-03-30**: Omni-INR-GAN
+
+We invented Omni-INR-GAN, which is more friendly to GAN inversion tasks. Please see our paper [Omni-GAN: On the Secrets of cGANs and Beyond](https://arxiv.org/abs/2011.13074).
+
+- Colorization
+
+<iframe src="//player.bilibili.com/player.html?aid=374863324&bvid=BV1nZ4y1A7H8&cid=317108147&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
+- Generating images of arbitrary resolution
+
+<iframe src="//player.bilibili.com/player.html?aid=374759654&bvid=BV1SZ4y1w7gu&cid=317109017&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
+- Super-resolution x60+
+
+<iframe src="//player.bilibili.com/player.html?aid=204818473&bvid=BV1Rh411S7Eg&cid=317109313&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
 
 #### **2021-02-17**: Results on ImageNet (256x256 resolution)
 
