@@ -5,6 +5,7 @@ In particular, it contains the code for the CIFAR experiments for your quick ref
 For the ImageNet and DGP experiments, please refer to [Omni-GAN-DGP](https://github.com/PeterouZh/Omni-GAN-DGP).
 
 
+===========================================================
 
 https://user-images.githubusercontent.com/26176709/139065863-f0a3f8f2-13a4-4cad-81ba-c0eae482b45a.mp4
 
