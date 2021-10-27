@@ -4,6 +4,14 @@ This repository contains code for the paper, [Omni-GAN: On the Secrets of cGANs 
 In particular, it contains the code for the CIFAR experiments for your quick reference. </br >
 For the ImageNet and DGP experiments, please refer to [Omni-GAN-DGP](https://github.com/PeterouZh/Omni-GAN-DGP).
 
+
+
+https://user-images.githubusercontent.com/26176709/139065863-f0a3f8f2-13a4-4cad-81ba-c0eae482b45a.mp4
+
+https://user-images.githubusercontent.com/26176709/139067067-75c6c67d-2e0e-4c59-bd77-26e5c64d26dc.mp4
+
+https://user-images.githubusercontent.com/26176709/139066000-61826cd5-3d05-4bbd-b647-3ed20a1f0929.mp4
+
 ===========================================================
 
 ### Comparision of several cGANs
