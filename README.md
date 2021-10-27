@@ -1,6 +1,8 @@
 ## Omni-GAN
 
-This repository contains code for the paper, [Omni-GAN: On the Secrets of cGANs and Beyond](https://arxiv.org/abs/2011.13074).
+This repository contains code for the paper, [Omni-GAN: On the Secrets of cGANs and Beyond](https://arxiv.org/abs/2011.13074). 
+In particular, it contains the code for the CIFAR experiments for your quick reference. 
+For the ImageNet and DGP experiments, please refer to [Omni-GAN-DGP](https://github.com/PeterouZh/Omni-GAN-DGP).
 
 ### TODO
 
@@ -66,12 +68,13 @@ Since I recently acquired GPU resources, I trained Omni-GAN on ImageNet datasets
 
 #### Results on CIFAR100
 <p float="left">
-<img src="https://github.com/PeterouZh/Omni-GAN-PyTorch/blob/main/.github/GAN_cGAN_cifar100_IS.png" width="350" />
-<img src="https://github.com/PeterouZh/Omni-GAN-PyTorch/blob/main/.github/GAN_cGAN_cifar100_FID.png" width="350" />
+<img src=".github/GAN_cGAN_cifar100_IS.png" width="350" />
+<img src=".github/GAN_cGAN_cifar100_FID.png" width="350" />
 </p>
 
+<!-- 
 #### More results
-![](.github/cifar10_cifar100.png)
+![](.github/cifar10_cifar100.png) -->
 
 ## Let's go!
 
